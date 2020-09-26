@@ -1,19 +1,32 @@
 var ready;
 var tryAgain;
 
+// Answers
 var passwordLength;
-
-// Character Variables
 var lowercaseAnswer;
 var uppercaseAnswer;
 var numbersAnswer;
 var specialAnswer;
+
+// Password Variables Containing Data
+var lowercaseData;
+var uppercaseData;
+var numberData;
+var specialData;
+
+// Possible Characters
+var possibleLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+var possibleNumbers = "0123456789";
+var possibleSpecial = "!@#$%^&*()";
 
 // Generate Password Variables
 var acceptPasswordFee;
 var password;
 var generateBtn = document.querySelector("#generate");
 var passwordText = document.querySelector("#password");
+
+// Array
+var passwordVariables = [];
 
 //..................... USER STARTS .............................
 
@@ -59,14 +72,12 @@ function collectPasswordLength(){
       }
 
     // If user clicks "Cancel," stops program.
-    } else if (passwordLength == false){
+    } else if (passwordLength === false){
       alert("Goodbye"); //Issue: Not logging when false.
-
   
     // If user enters a number, start collectCharacterData function.
     } else {
-      collectCharacterData();
-
+      collectCharacterData(passwordLength);
     }
 
     // Console Log Status
@@ -76,33 +87,54 @@ function collectPasswordLength(){
 
 // Starts Collecting Character Data
 
-function collectCharacterData(){
+function collectCharacterData(passwordLength){
+console.log(passwordLength);
+  // Collecting Character Data Variables
+  lowercaseAnswer = confirm("Does your password require lowercase letters?");
+  uppercaseAnswer = confirm("Does your password require uppercase letters?");
+  numbersAnswer = confirm("Does your password require numbers?");
+  specialAnswer = confirm ("Does your password require special characters");
 
-      // Collecting Character Data Variables
-      lowercaseAnswer = confirm("Does your password require lowercase letters?");
-      uppercaseAnswer = confirm("Does your password require uppercase letters?");
-      numbersAnswer = confirm("Does your password require numbers?");
-      specialAnswer = confirm ("Does your password require special characters");
-      
-      // Asks User If Willing to Accept Password Generation Fee
-      acceptPasswordFee = confirm("Are you willing to accept a $400 password generation fee?");
+    // Asks User If Willing to Accept Password Generation Fee
+    acceptPasswordFee = confirm("Are you willing to accept a $400 password generation fee?");
 
-      if (acceptPasswordFee){
-        alert("Working on the rest of this.");
-      } else {
-        alert("Goodbye!"); 
-      }
+    if (acceptPasswordFee){
+      alert("Working on the rest of this.");
+    } else {
+      alert("Goodbye!"); 
+    }
+    
+  // Console Log Status
+  console.log(lowercaseAnswer);
+  console.log(numbersAnswer); // GOOD
+  console.log(specialAnswer); // GOOD
+  console.log(acceptPasswordFee); // GOOD
+  
+  if (lowercaseAnswer === true){ 
 
-      // Console Log Status
-      console.log(lowercaseAnswer); // GOOD
-      console.log(uppercaseAnswer); // GOOD
-      console.log(numbersAnswer); // GOOD
-      console.log(specialAnswer); // GOOD
+    lowercaseData = (Math.floor((Math.random() * 26 +1)));
+    console.log(lowercaseData)
+    passwordVariables = passwordVariables.push(lowercaseData);
+    // if lower case is true
+    //add all the lower case letters to possible options
+    //a passwordVariables = passwordVariables.concatenate(//'abc')
+    console.log(lowercaseAnswer);
+    
+  }
 
-      console.log(acceptPasswordFee); // GOOD
+//3
+  //['A','B','a','b', '1', '2']
+  //console.log(uppercaseAnswer); // GOOD
+
+  //if (uppercaseAnswer === true){ // if lower case is true
+    //add all the lower case letters to possible options
+    // passwordVariables = passwordVariables.concatenate(//'ABC')
+  //}
 }
 
 function generatePassword(){
+
+  
 
   password = Math.floor((Math.random() * 100) +1);
 
