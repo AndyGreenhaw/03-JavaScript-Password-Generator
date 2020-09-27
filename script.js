@@ -15,9 +15,10 @@ var numberData;
 var specialData;
 
 // Possible Characters
-var possibleLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+var possibleLowerCase = "abcdefghijklmnopqrstuvwxyz"
+var possibleUpperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var possibleNumbers = "0123456789";
-var possibleSpecial = "!@#$%^&*()";
+var possibleSpecial = "!@#)$%^&*(";
 
 // Generate Password Variables
 var acceptPasswordFee;
@@ -87,22 +88,14 @@ function collectPasswordLength(){
 
 // Starts Collecting Character Data
 
-function collectCharacterData(passwordLength){
-console.log(passwordLength);
+function collectCharacterData(){
+  console.log(passwordLength); //GOOD
+  
   // Collecting Character Data Variables
   lowercaseAnswer = confirm("Does your password require lowercase letters?");
   uppercaseAnswer = confirm("Does your password require uppercase letters?");
   numbersAnswer = confirm("Does your password require numbers?");
   specialAnswer = confirm ("Does your password require special characters");
-
-    // Asks User If Willing to Accept Password Generation Fee
-    acceptPasswordFee = confirm("Are you willing to accept a $400 password generation fee?");
-
-    if (acceptPasswordFee){
-      alert("Working on the rest of this.");
-    } else {
-      alert("Goodbye!"); 
-    }
     
   // Console Log Status
   console.log(lowercaseAnswer);
@@ -110,36 +103,61 @@ console.log(passwordLength);
   console.log(specialAnswer); // GOOD
   console.log(acceptPasswordFee); // GOOD
   
+  //LowerCase Generator
   if (lowercaseAnswer === true){ 
+    lowercaseData = possibleLowerCase.charAt((Math.floor((Math.random() * 27))));
+    console.log(lowercaseData); // GOOD
 
-    lowercaseData = (Math.floor((Math.random() * 26 +1)));
-    console.log(lowercaseData)
-    passwordVariables = passwordVariables.push(lowercaseData);
-    // if lower case is true
-    //add all the lower case letters to possible options
-    //a passwordVariables = passwordVariables.concatenate(//'abc')
-    console.log(lowercaseAnswer);
+    passwordVariables.push(lowercaseData)
+
+    }
     
+  //UpperCase Generator
+  if (uppercaseAnswer === true) {
+    uppercaseData = possibleUpperCase.charAt((Math.floor((Math.random()) * 27)));
+    console.log(uppercaseData); // GOOD
+
+    passwordVariables.push(uppercaseData)
+
+  }
+  
+  //Numbers Generator
+  if (numbersAnswer === true) {
+    numberData = Math.floor((Math.random() * 9));
+    console.log(numberData); //GOOD
+
+    passwordVariables.push(numberData)
   }
 
-//3
-  //['A','B','a','b', '1', '2']
-  //console.log(uppercaseAnswer); // GOOD
+  //Special Characters Generator
+    if (specialAnswer === true) {
+      specialData = possibleSpecial.charAt((Math.floor((Math.random() * 11))));
+      console.log(specialData); //GOOD
 
-  //if (uppercaseAnswer === true){ // if lower case is true
-    //add all the lower case letters to possible options
-    // passwordVariables = passwordVariables.concatenate(//'ABC')
-  //}
+      passwordVariables.push(specialData)
+  }
+
+  // Confirm Password Generation Fee
+  acceptPasswordFee = confirm("Are you willing to accept the $500 password generation fee?");
+
+    if (acceptPasswordFee){
+      alert("Working on the rest of this.");
+      generatePassword();
+      
+    } else {
+      alert("Goodbye!"); 
+    }
 }
 
 function generatePassword(){
-
-  
-
-  password = Math.floor((Math.random() * 100) +1);
-
-  console.log(password);
+  console.log(passwordLength); //GOOD
+  console.log(lowercaseData); // GOOD
+  console.log(uppercaseData); // GOOD
+  console.log(numberData); //GOOD
+  console.log(specialData); //GOOD
 }
+
+
 
       // Was fenagling with how to group these variables - plan on working with Ivan to discuss the best way to group and call objects.
 
