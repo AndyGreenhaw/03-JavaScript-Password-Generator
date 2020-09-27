@@ -15,8 +15,14 @@ var uppercaseData;
 var numberData;
 var specialData;
 
+// Variables for Random
+var lowercaseRandom;
+var uppercaseRandom;
+var numberRandom;
+var specialRandom;
+
 // Possible Characters
-var possibleLowerCase = "abcdefghijklmnopqrstuvwxyz"
+var possibleLowerCase = "abcdefghijklmnopqrstuvwxyz";
 var possibleUpperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var possibleNumbers = "0123456789";
 var possibleSpecial = "!@#$%^&*";
@@ -27,6 +33,7 @@ var randomChar;
 var ready;
 var tryAgain;
 var acceptPasswordFee;
+var randomPosition; 
 
 //Queries
 var generateBtn = document.querySelector("#generate");
@@ -34,7 +41,8 @@ var passwordText = document.querySelector("#password");
 
 // Arrays
 var passwordVariables = [];
-var randomFunctions = {};
+var allFunctions = [];
+var randomFunctions = [];
 
 //..................... USER STARTS .............................
 
@@ -103,23 +111,32 @@ function collectCharacterData(){
     //LowerCase Generator
     if (lowercaseAnswer === true){ 
       generateLowerCase();
+      passwordVariables.push(lowercaseData);
+
       };
       
     //UpperCase Generator
     if (uppercaseAnswer === true) {
       generateUpperCase();
+      passwordVariables.push(uppercaseData);
+      
     };
 
     //Numbers Generator
     if (numbersAnswer === true) {
       generateNumber();
+      passwordVariables.push(numberData);
+      
     };
 
     //Special Characters Generator
     if (specialAnswer === true) {
       generateSpecial();
+      passwordVariables.push(specialData);
+      
     };
 
+    //Random Character Generator
     if (passwordLength > 4){
       generateRandom();
     };
@@ -131,78 +148,79 @@ function collectCharacterData(){
 
 function generateLowerCase(){
     lowercaseData = possibleLowerCase.charAt(Math.floor(Math.random() * 26) + 1);
-        console.log(lowercaseData); // GOOD
-        passwordVariables.push(lowercaseData);
+    console.log("ORIGINAL " + lowercaseData);
+        //passwordVariables.push(lowercaseData);
   };
 
 function generateUpperCase(){
     uppercaseData = possibleUpperCase.charAt(Math.floor(Math.random() * 26) + 1);
-        console.log(uppercaseData); // GOOD
-        passwordVariables.push(uppercaseData);
+    console.log("ORIGINAL " + uppercaseData);
   };
 
 function generateNumber(){
-    numberData = Math.floor(Math.random() * 10);
-        console.log(numberData); //GOOD
-        passwordVariables.push(numberData);
+    numberData = (Math.floor(Math.random() * 9) + 1);
+      console.log("ORIGINAL " + numberData);
   };
 
 function generateSpecial(){
-    specialData = possibleSpecial.charAt(Math.floor(Math.random() * 9));
-        console.log(specialData); //GOOD
-        passwordVariables.push(specialData);
+    specialData = possibleSpecial.charAt(Math.floor(Math.random() * 9) + 1);
+    console.log("ORIGINAL " + specialData);
+        //passwordVariables.push(specialData);
   };
 
-//WORKIGN HERECSDAOJNVCJIEVNJIENVIJLENVIJFANJILNAIJNCJIADNJCNJNWEJNCEWJCNW
-//WORKIGN HERECSDAOJNVCJIEVNJIENVIJLENVIJFANJILNAIJNCJIADNJCNJNWEJNCEWJCNW
-//WORKIGN HERECSDAOJNVCJIEVNJIENVIJLENVIJFANJILNAIJNCJIADNJCNJNWEJNCEWJCNW
-//WORKIGN HERECSDAOJNVCJIEVNJIENVIJLENVIJFANJILNAIJNCJIADNJCNJNWEJNCEWJCNW
-//WORKIGN HERECSDAOJNVCJIEVNJIENVIJLENVIJFANJILNAIJNCJIADNJCNJNWEJNCEWJCNW
+function generateRandom() {
 
-function generateRandom(){
-
-   randomFunctions = {
-      rFunctions : [
-        generateLowerCase(String),
-        generateUpperCase(String),
-        generateNumber(Number),
-        generateSpecial()
-      ]
+  if (lowercaseAnswer === true){ 
+    lowercaseRandom = possibleLowerCase.charAt(Math.floor(Math.random() * 26) + 1);
+    console.log("RANDOM " + lowercaseRandom);
+    randomFunctions.push(lowercaseRandom);
     };
-
-    for (var i = 0; i < (passwordLength - 4); i++){
-      console.log("LOOK" + (passwordLength-4));
-      randomChar = randomFunctions.rFunctions[i];
-      return randomChar;
-      passwordVariables.push(randomChar);
-    }
+    
+  if (uppercaseAnswer === true) {
+    uppercaseRandom = possibleUpperCase.charAt(Math.floor(Math.random() * 26) + 1);
+    console.log("RANDOM " + uppercaseRandom);
+    randomFunctions.push(uppercaseRandom);
   };
 
+  if (numbersAnswer === true) {
+    numberRandom = (Math.floor(Math.random() * 9) + 1);
+    console.log("RANDOM " + numberRandom);
+    randomFunctions.push(numberRandom);
+  };
 
+  if (specialAnswer === true) {
+    specialRandom = possibleSpecial.charAt((Math.floor(Math.random()) * 9) + 1);
+    console.log("RANDOM " + specialRandom); 
+    randomFunctions.push(specialRandom);
+  };
 
+  console.log("RANDOM ARRAY " + randomFunctions);
+  console.log("RANDOM ARRAY " + randomFunctions.length);
 
+  //for (var i = 0; i < (passwordLength - 4); i++){
+    //randomPosition = Math.floor(Math.random() * 4);
+    //allFunctions[randomPosition];
+    //randomFunction = allFunctions[Math.floor(Math.random() * 4)];
 
+  //};
 
-console.log(randomChar);
-
-//If the user's answer if greater than 4, add a new character
-//Choose a random function to determine that random character
-
+};
 
 // Generate Password Function
 
 function generatePassword(){
-  console.log(passwordLength); //GOOD
-  console.log(lowercaseData); // GOOD
-  console.log(uppercaseData); // GOOD
-  console.log(numberData); //GOOD
-  console.log(specialData); //GOOD
+  console.log("pwLENGTH: " + passwordLength); //GOOD
+  console.log("lcDATA: " + lowercaseData); // GOOD
+  console.log("ucDATA: " + uppercaseData); // GOOD
+  console.log("nDATA: " + numberData); //GOOD
+  console.log("sDATA: " + specialData); //GOOD
   console.log(passwordVariables);
 
   //var charSelector = Math.floor((Math.random() * 4)
   
 password = passwordVariables.join("");
-console.log(password);
+console.log("FINAL PASSWORD: " + password);
+console.log(passwordVariables.length);
 
   //for (var i = 0; i < passwordVariables.length; i++) {
     //password = passwordVariables[i];
