@@ -1,3 +1,7 @@
+//Goal
+var password;
+var finalPassword;
+
 // Answers
 var passwordLength;
 var lowercaseAnswer;
@@ -17,15 +21,18 @@ var possibleUpperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var possibleNumbers = "0123456789";
 var possibleSpecial = "!@#)$%^&*(";
 
+var randomChar;
+
 // Miscellaneous
 var ready;
 var tryAgain;
 var acceptPasswordFee;
-var password;
+
+//Queries
 var generateBtn = document.querySelector("#generate");
 var passwordText = document.querySelector("#password");
 
-// Array
+// Arrays
 var passwordVariables = [];
 
 //..................... USER STARTS .............................
@@ -43,7 +50,7 @@ function readyToStart() {
     } else {
       alert("Goodbye!"); 
     }    
-}
+};
 
 // Starts Collecting Password Length
 
@@ -74,7 +81,7 @@ function collectPasswordLength(){
 
     // Console Log Status
     console.log(passwordLength); //ISSUE: Not logging when false - Good for isNan and Number.
-}
+};
 
 // Starts Collecting Character Data
 
@@ -112,33 +119,67 @@ function collectCharacterData(){
       generateSpecial();
     }
 
-}
+    generatePassword();
+};
 
   // Character Generators
 
-  function generateLowerCase(){
-    lowercaseData = possibleUpperCase.charAt((Math.floor((Math.random()) * 27)));
+function generateLowerCase(){
+    lowercaseData = possibleLowerCase.charAt((Math.floor(Math.random() * 27) + 1));
         console.log(lowercaseData); // GOOD
         passwordVariables.push(lowercaseData);
-  }
+  };
 
-  function generateUpperCase(){
-    uppercaseData = possibleUpperCase.charAt((Math.floor((Math.random()) * 27)));
+function generateUpperCase(){
+    uppercaseData = possibleUpperCase.charAt((Math.floor((Math.random() * 27) + 1)));
         console.log(uppercaseData); // GOOD
         passwordVariables.push(uppercaseData);
-  }
+  };
 
-  function generateNumber(){
-    numberData = Math.floor((Math.random() * 9));
+function generateNumber(){
+    numberData = Math.floor(Math.random() * 10) + 1;
         console.log(numberData); //GOOD
         passwordVariables.push(numberData);
-  }
+  };
 
-  function generateSpecial(){
-    specialData = possibleSpecial.charAt(Math.floor((Math.random() * 11)));
+function generateSpecial(){
+    specialData = possibleSpecial.charAt((Math.floor(Math.random() * 11) + 1));
         console.log(specialData); //GOOD
         passwordVariables.push(specialData);
-  }
+  };
+
+//WORKIGN HERECSDAOJNVCJIEVNJIENVIJLENVIJFANJILNAIJNCJIADNJCNJNWEJNCEWJCNW
+//WORKIGN HERECSDAOJNVCJIEVNJIENVIJLENVIJFANJILNAIJNCJIADNJCNJNWEJNCEWJCNW
+//WORKIGN HERECSDAOJNVCJIEVNJIENVIJLENVIJFANJILNAIJNCJIADNJCNJNWEJNCEWJCNW
+//WORKIGN HERECSDAOJNVCJIEVNJIENVIJLENVIJFANJILNAIJNCJIADNJCNJNWEJNCEWJCNW
+//WORKIGN HERECSDAOJNVCJIEVNJIENVIJLENVIJFANJILNAIJNCJIADNJCNJNWEJNCEWJCNW
+
+var randomFunctions = {
+    rFunctions : [
+      generateLowerCase(),
+      generateUpperCase(),
+      generateNumber(),
+      generateSpecial()
+    ]
+  };
+
+function generateRandom(){
+
+  for (var i = 0; i < (passwordLength - 4); i++){
+    randomChar = randomFunction.rFunctions[i];
+  };
+};
+
+generateRandom();
+console.log("RANDOM" + randomChar);
+
+
+
+console.log(randomChar);
+
+//If the user's answer if greater than 4, add a new character
+//Choose a random function to determine that random character
+
 
 // Generate Password Function
 
@@ -152,14 +193,16 @@ function generatePassword(){
 
   //var charSelector = Math.floor((Math.random() * 4)
   
+password = passwordVariables.join("");
+console.log(password);
 
-  for (var i = 0; i < passwordVariables.length; i++);
+  //for (var i = 0; i < passwordVariables.length; i++) {
+    //password = passwordVariables[i];
+    //finalPassword;
+  //}
+};
 
 
-
-}
-
-password = generatePassword();
 
       // Was fenagling with how to group these variables - plan on working with Ivan to discuss the best way to group and call objects.
 
