@@ -101,53 +101,56 @@ function collectCharacterData(){
   console.log(lowercaseAnswer);
   console.log(numbersAnswer); // GOOD
   console.log(specialAnswer); // GOOD
-  console.log(acceptPasswordFee); // GOOD
   
   //LowerCase Generator
   if (lowercaseAnswer === true){ 
-    lowercaseData = possibleLowerCase.charAt((Math.floor((Math.random() * 27))));
-    console.log(lowercaseData); // GOOD
-
-    passwordVariables.push(lowercaseData)
-
+    generateLowerCase();
     }
     
   //UpperCase Generator
   if (uppercaseAnswer === true) {
-    uppercaseData = possibleUpperCase.charAt((Math.floor((Math.random()) * 27)));
-    console.log(uppercaseData); // GOOD
-
-    passwordVariables.push(uppercaseData)
-
+    generateUpperCase();
   }
   
   //Numbers Generator
   if (numbersAnswer === true) {
-    numberData = Math.floor((Math.random() * 9));
-    console.log(numberData); //GOOD
-
-    passwordVariables.push(numberData)
+    generateNumber()
   }
 
   //Special Characters Generator
     if (specialAnswer === true) {
-      specialData = possibleSpecial.charAt((Math.floor((Math.random() * 11))));
-      console.log(specialData); //GOOD
-
-      passwordVariables.push(specialData)
+      generateSpecial()
   }
 
-  // Confirm Password Generation Fee
-  acceptPasswordFee = confirm("Are you willing to accept the $500 password generation fee?");
+generatePassword();
 
-    if (acceptPasswordFee){
-      alert("Working on the rest of this.");
-      generatePassword();
-      
-    } else {
-      alert("Goodbye!"); 
-    }
 }
+
+function generateLowerCase(){
+  lowercaseData = possibleUpperCase.charAt((Math.floor((Math.random()) * 27)));
+      console.log(lowercaseData); // GOOD
+      passwordVariables.push(lowercaseData);
+}
+
+function generateUpperCase(){
+  uppercaseData = possibleUpperCase.charAt((Math.floor((Math.random()) * 27)));
+      console.log(uppercaseData); // GOOD
+      passwordVariables.push(uppercaseData);
+}
+
+function generateNumber(){
+  numberData = Math.floor((Math.random() * 9));
+      console.log(numberData); //GOOD
+      passwordVariables.push(numberData);
+}
+
+function generateSpecial(){
+  specialData = possibleSpecial.charAt(Math.floor((Math.random() * 11)));
+      console.log(specialData); //GOOD
+      passwordVariables.push(specialData);
+}
+
+// Generate Password Function
 
 function generatePassword(){
   console.log(passwordLength); //GOOD
@@ -155,6 +158,28 @@ function generatePassword(){
   console.log(uppercaseData); // GOOD
   console.log(numberData); //GOOD
   console.log(specialData); //GOOD
+  console.log(passwordVariables);
+
+
+
+
+// Confirm Password Generation Fee
+acceptPasswordFee = confirm("Are you willing to accept the $500 password generation fee?");
+  console.log(acceptPasswordFee); // GOOD
+
+if (acceptPasswordFee){
+  alert("Working on the rest of this.");
+  generateSpecial();
+  
+} else {
+  alert("Goodbye!"); 
+}
+
+  
+
+  //for (var i = 0; i < passwordLength; i++)
+
+
 }
 
 
